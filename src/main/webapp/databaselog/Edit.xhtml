@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="DatabaselogEditDlg" widgetVar="DatabaselogEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{messages.EditDatabaselogTitle}" closeOnEscape="true">
+
+            <h:form id="DatabaselogEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{databaselogController.selected != null}">
+
+
+                        <h:outputLabel value="#{messages.EditDatabaselogLabel_databaseLogID}" for="databaseLogID" />
+                        <h:outputText id="databaseLogID" value="#{databaselogController.selected.databaseLogID}" />
+
+                        <p:outputLabel value="#{messages.EditDatabaselogLabel_postTime}" for="postTime" />
+                        <p:calendar id="postTime" pattern="MM/dd/yyyy HH:mm:ss" value="#{databaselogController.selected.postTime}" title="#{messages.EditDatabaselogTitle_postTime}" required="true" requiredMessage="#{messages.EditDatabaselogRequiredMessage_postTime}" showOn="button"/>
+
+                        <p:outputLabel value="#{messages.EditDatabaselogLabel_databaseUser}" for="databaseUser" />
+                        <p:inputText id="databaseUser" value="#{databaselogController.selected.databaseUser}" title="#{messages.EditDatabaselogTitle_databaseUser}" required="true" requiredMessage="#{messages.EditDatabaselogRequiredMessage_databaseUser}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.EditDatabaselogLabel_event}" for="event" />
+                        <p:inputText id="event" value="#{databaselogController.selected.event}" title="#{messages.EditDatabaselogTitle_event}" required="true" requiredMessage="#{messages.EditDatabaselogRequiredMessage_event}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.EditDatabaselogLabel_schema}" for="schema" />
+                        <p:inputText id="schema" value="#{databaselogController.selected.schema}" title="#{messages.EditDatabaselogTitle_schema}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.EditDatabaselogLabel_object}" for="object" />
+                        <p:inputText id="object" value="#{databaselogController.selected.object}" title="#{messages.EditDatabaselogTitle_object}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.EditDatabaselogLabel_tsql}" for="tsql" />
+                        <p:inputTextarea rows="4" cols="30" id="tsql" value="#{databaselogController.selected.tsql}" title="#{messages.EditDatabaselogTitle_tsql}" required="true" requiredMessage="#{messages.EditDatabaselogRequiredMessage_tsql}"/>
+
+                        <p:outputLabel value="#{messages.EditDatabaselogLabel_xmlEvent}" for="xmlEvent" />
+                        <p:inputTextarea rows="4" cols="30" id="xmlEvent" value="#{databaselogController.selected.xmlEvent}" title="#{messages.EditDatabaselogTitle_xmlEvent}" required="true" requiredMessage="#{messages.EditDatabaselogRequiredMessage_xmlEvent}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{databaselogController.save}" value="#{messages.Save}" update="display,:DatabaselogListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('DatabaselogEditDialog'));">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{messages.Cancel}" oncomplete="PF('DatabaselogEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

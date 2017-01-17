@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <ul class="list">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active">
+                <a href="#{request.contextPath}/index.xhtml">
+                    <i class="material-icons">home</i>
+                    <span>#{messages.Home}</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">swap_calls</i>
+                    <span>#{messages.Maintenance}</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="#{request.contextPath}/address/index.xhtml">#{messages.AddressHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/addresstype/index.xhtml">#{messages.AddresstypeHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/awbuildversion/index.xhtml">#{messages.AwbuildversionHeading}...</a>
+                    </li>
+
+                    <li>
+                        <a href="#{request.contextPath}/billofmaterials/index.xhtml">#{messages.BillofmaterialsHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/contact/index.xhtml">#{messages.ContactHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/contactcreditcard/index.xhtml">#{messages.ContactcreditcardHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/contacttype/index.xhtml">#{messages.ContacttypeHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/countryregion/index.xhtml">#{messages.CountryregionHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/creditcard/index.xhtml">#{messages.CreditcardHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/culture/index.xhtml">#{messages.CultureHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/currency/index.xhtml">#{messages.CurrencyHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/currencyrate/index.xhtml">#{messages.CurrencyrateHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/customer/index.xhtml">#{messages.CustomerHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/customeraddress/index.xhtml">#{messages.CustomeraddressHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/databaselog/index.xhtml">#{messages.DatabaselogHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/department/index.xhtml">#{messages.DepartmentHeading}...</a>
+                    </li>
+                    <li>
+                        <a href="#{request.contextPath}/document/index.xhtml">#{messages.DocumentHeading}...</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </ui:composition>
+
+</html>

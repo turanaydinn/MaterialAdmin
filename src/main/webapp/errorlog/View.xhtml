@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ErrorlogViewDlg" widgetVar="ErrorlogViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{messages.ViewErrorlogTitle}" closeOnEscape="true">
+
+            <h:form id="ErrorlogViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{errorlogController.selected != null}">
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorLogID}"/>
+                        <h:outputText value="#{errorlogController.selected.errorLogID}" title="#{messages.ViewErrorlogTitle_errorLogID}"/>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorTime}"/>
+                        <h:outputText value="#{errorlogController.selected.errorTime}" title="#{messages.ViewErrorlogTitle_errorTime}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_userName}"/>
+                        <h:outputText value="#{errorlogController.selected.userName}" title="#{messages.ViewErrorlogTitle_userName}"/>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorNumber}"/>
+                        <h:outputText value="#{errorlogController.selected.errorNumber}" title="#{messages.ViewErrorlogTitle_errorNumber}"/>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorSeverity}"/>
+                        <h:outputText value="#{errorlogController.selected.errorSeverity}" title="#{messages.ViewErrorlogTitle_errorSeverity}"/>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorState}"/>
+                        <h:outputText value="#{errorlogController.selected.errorState}" title="#{messages.ViewErrorlogTitle_errorState}"/>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorProcedure}"/>
+                        <h:outputText value="#{errorlogController.selected.errorProcedure}" title="#{messages.ViewErrorlogTitle_errorProcedure}"/>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorLine}"/>
+                        <h:outputText value="#{errorlogController.selected.errorLine}" title="#{messages.ViewErrorlogTitle_errorLine}"/>
+
+                        <h:outputText value="#{messages.ViewErrorlogLabel_errorMessage}"/>
+                        <h:outputText value="#{errorlogController.selected.errorMessage}" title="#{messages.ViewErrorlogTitle_errorMessage}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{messages.Close}" onclick="PF('ErrorlogViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

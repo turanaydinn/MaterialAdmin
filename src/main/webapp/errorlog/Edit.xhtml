@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ErrorlogEditDlg" widgetVar="ErrorlogEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{messages.EditErrorlogTitle}" closeOnEscape="true">
+
+            <h:form id="ErrorlogEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{errorlogController.selected != null}">
+
+
+                        <h:outputLabel value="#{messages.EditErrorlogLabel_errorLogID}" for="errorLogID" />
+                        <h:outputText id="errorLogID" value="#{errorlogController.selected.errorLogID}" />
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_errorTime}" for="errorTime" />
+                        <p:calendar id="errorTime" pattern="MM/dd/yyyy HH:mm:ss" value="#{errorlogController.selected.errorTime}" title="#{messages.EditErrorlogTitle_errorTime}" required="true" requiredMessage="#{messages.EditErrorlogRequiredMessage_errorTime}" showOn="button"/>
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_userName}" for="userName" />
+                        <p:inputText id="userName" value="#{errorlogController.selected.userName}" title="#{messages.EditErrorlogTitle_userName}" required="true" requiredMessage="#{messages.EditErrorlogRequiredMessage_userName}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_errorNumber}" for="errorNumber" />
+                        <p:inputText id="errorNumber" value="#{errorlogController.selected.errorNumber}" title="#{messages.EditErrorlogTitle_errorNumber}" required="true" requiredMessage="#{messages.EditErrorlogRequiredMessage_errorNumber}"/>
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_errorSeverity}" for="errorSeverity" />
+                        <p:inputText id="errorSeverity" value="#{errorlogController.selected.errorSeverity}" title="#{messages.EditErrorlogTitle_errorSeverity}"/>
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_errorState}" for="errorState" />
+                        <p:inputText id="errorState" value="#{errorlogController.selected.errorState}" title="#{messages.EditErrorlogTitle_errorState}"/>
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_errorProcedure}" for="errorProcedure" />
+                        <p:inputText id="errorProcedure" value="#{errorlogController.selected.errorProcedure}" title="#{messages.EditErrorlogTitle_errorProcedure}" size="126" maxlength="126"/>
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_errorLine}" for="errorLine" />
+                        <p:inputText id="errorLine" value="#{errorlogController.selected.errorLine}" title="#{messages.EditErrorlogTitle_errorLine}"/>
+
+                        <p:outputLabel value="#{messages.EditErrorlogLabel_errorMessage}" for="errorMessage" />
+                        <p:inputTextarea rows="4" cols="30" id="errorMessage" value="#{errorlogController.selected.errorMessage}" title="#{messages.EditErrorlogTitle_errorMessage}" required="true" requiredMessage="#{messages.EditErrorlogRequiredMessage_errorMessage}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{errorlogController.save}" value="#{messages.Save}" update="display,:ErrorlogListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ErrorlogEditDialog'));">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{messages.Cancel}" oncomplete="PF('ErrorlogEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

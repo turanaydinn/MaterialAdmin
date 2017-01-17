@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DatabaselogCreateDlg" widgetVar="DatabaselogCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{messages.CreateDatabaselogTitle}" closeOnEscape="true">
+
+            <h:form id="DatabaselogCreateForm">
+
+                <h:panelGroup id="display" rendered="#{databaselogController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{messages.CreateDatabaselogLabel_postTime}" for="postTime" />
+                        <p:calendar id="postTime" pattern="MM/dd/yyyy HH:mm:ss" value="#{databaselogController.selected.postTime}" title="#{messages.CreateDatabaselogTitle_postTime}" required="true" requiredMessage="#{messages.CreateDatabaselogRequiredMessage_postTime}" showOn="button"/>
+
+                        <p:outputLabel value="#{messages.CreateDatabaselogLabel_databaseUser}" for="databaseUser" />
+                        <p:inputText id="databaseUser" value="#{databaselogController.selected.databaseUser}" title="#{messages.CreateDatabaselogTitle_databaseUser}" required="true" requiredMessage="#{messages.CreateDatabaselogRequiredMessage_databaseUser}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.CreateDatabaselogLabel_event}" for="event" />
+                        <p:inputText id="event" value="#{databaselogController.selected.event}" title="#{messages.CreateDatabaselogTitle_event}" required="true" requiredMessage="#{messages.CreateDatabaselogRequiredMessage_event}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.CreateDatabaselogLabel_schema}" for="schema" />
+                        <p:inputText id="schema" value="#{databaselogController.selected.schema}" title="#{messages.CreateDatabaselogTitle_schema}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.CreateDatabaselogLabel_object}" for="object" />
+                        <p:inputText id="object" value="#{databaselogController.selected.object}" title="#{messages.CreateDatabaselogTitle_object}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.CreateDatabaselogLabel_tsql}" for="tsql" />
+                        <p:inputTextarea rows="4" cols="30" id="tsql" value="#{databaselogController.selected.tsql}" title="#{messages.CreateDatabaselogTitle_tsql}" required="true" requiredMessage="#{messages.CreateDatabaselogRequiredMessage_tsql}"/>
+
+                        <p:outputLabel value="#{messages.CreateDatabaselogLabel_xmlEvent}" for="xmlEvent" />
+                        <p:inputTextarea rows="4" cols="30" id="xmlEvent" value="#{databaselogController.selected.xmlEvent}" title="#{messages.CreateDatabaselogTitle_xmlEvent}" required="true" requiredMessage="#{messages.CreateDatabaselogRequiredMessage_xmlEvent}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{databaselogController.saveNew}" value="#{messages.Save}" update="display,:DatabaselogListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('DatabaselogCreateDialog'));">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{messages.Cancel}" oncomplete="PF('DatabaselogCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

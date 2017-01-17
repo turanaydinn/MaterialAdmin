@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ErrorlogCreateDlg" widgetVar="ErrorlogCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{messages.CreateErrorlogTitle}" closeOnEscape="true">
+
+            <h:form id="ErrorlogCreateForm">
+
+                <h:panelGroup id="display" rendered="#{errorlogController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_errorTime}" for="errorTime" />
+                        <p:calendar id="errorTime" pattern="MM/dd/yyyy HH:mm:ss" value="#{errorlogController.selected.errorTime}" title="#{messages.CreateErrorlogTitle_errorTime}" required="true" requiredMessage="#{messages.CreateErrorlogRequiredMessage_errorTime}" showOn="button"/>
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_userName}" for="userName" />
+                        <p:inputText id="userName" value="#{errorlogController.selected.userName}" title="#{messages.CreateErrorlogTitle_userName}" required="true" requiredMessage="#{messages.CreateErrorlogRequiredMessage_userName}" size="128" maxlength="128"/>
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_errorNumber}" for="errorNumber" />
+                        <p:inputText id="errorNumber" value="#{errorlogController.selected.errorNumber}" title="#{messages.CreateErrorlogTitle_errorNumber}" required="true" requiredMessage="#{messages.CreateErrorlogRequiredMessage_errorNumber}"/>
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_errorSeverity}" for="errorSeverity" />
+                        <p:inputText id="errorSeverity" value="#{errorlogController.selected.errorSeverity}" title="#{messages.CreateErrorlogTitle_errorSeverity}"/>
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_errorState}" for="errorState" />
+                        <p:inputText id="errorState" value="#{errorlogController.selected.errorState}" title="#{messages.CreateErrorlogTitle_errorState}"/>
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_errorProcedure}" for="errorProcedure" />
+                        <p:inputText id="errorProcedure" value="#{errorlogController.selected.errorProcedure}" title="#{messages.CreateErrorlogTitle_errorProcedure}" size="126" maxlength="126"/>
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_errorLine}" for="errorLine" />
+                        <p:inputText id="errorLine" value="#{errorlogController.selected.errorLine}" title="#{messages.CreateErrorlogTitle_errorLine}"/>
+
+                        <p:outputLabel value="#{messages.CreateErrorlogLabel_errorMessage}" for="errorMessage" />
+                        <p:inputTextarea rows="4" cols="30" id="errorMessage" value="#{errorlogController.selected.errorMessage}" title="#{messages.CreateErrorlogTitle_errorMessage}" required="true" requiredMessage="#{messages.CreateErrorlogRequiredMessage_errorMessage}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{errorlogController.saveNew}" value="#{messages.Save}" update="display,:ErrorlogListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ErrorlogCreateDialog'));">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{messages.Cancel}" oncomplete="PF('ErrorlogCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

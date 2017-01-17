@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DatabaselogViewDlg" widgetVar="DatabaselogViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{messages.ViewDatabaselogTitle}" closeOnEscape="true">
+
+            <h:form id="DatabaselogViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{databaselogController.selected != null}">
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_databaseLogID}"/>
+                        <h:outputText value="#{databaselogController.selected.databaseLogID}" title="#{messages.ViewDatabaselogTitle_databaseLogID}"/>
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_postTime}"/>
+                        <h:outputText value="#{databaselogController.selected.postTime}" title="#{messages.ViewDatabaselogTitle_postTime}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_databaseUser}"/>
+                        <h:outputText value="#{databaselogController.selected.databaseUser}" title="#{messages.ViewDatabaselogTitle_databaseUser}"/>
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_event}"/>
+                        <h:outputText value="#{databaselogController.selected.event}" title="#{messages.ViewDatabaselogTitle_event}"/>
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_schema}"/>
+                        <h:outputText value="#{databaselogController.selected.schema}" title="#{messages.ViewDatabaselogTitle_schema}"/>
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_object}"/>
+                        <h:outputText value="#{databaselogController.selected.object}" title="#{messages.ViewDatabaselogTitle_object}"/>
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_tsql}"/>
+                        <h:outputText value="#{databaselogController.selected.tsql}" title="#{messages.ViewDatabaselogTitle_tsql}"/>
+
+                        <h:outputText value="#{messages.ViewDatabaselogLabel_xmlEvent}"/>
+                        <h:outputText value="#{databaselogController.selected.xmlEvent}" title="#{messages.ViewDatabaselogTitle_xmlEvent}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{messages.Close}" onclick="PF('DatabaselogViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
