@@ -16,7 +16,7 @@
                     <p:panelGrid columns="2" columnClasses="column">
 
                         <p:outputLabel value="#{messages.CreateAddressLabel_addressLine1}" for="addressLine1" />
-                        <p:inputText id="addressLine1" value="#{addressController.selected.addressLine1}" title="#{messages.CreateAddressTitle_addressLine1}" required="true" requiredMessage="#{messages.CreateAddressRequiredMessage_addressLine1}" size="60" maxlength="60"/>
+                        <p:inputText id="addressLine1" value="#{addressController.selected.addressLine1}" class="form-control" title="#{messages.CreateAddressTitle_addressLine1}" required="true" requiredMessage="#{messages.CreateAddressRequiredMessage_addressLine1}" size="60" maxlength="60"/>
 
                         <p:outputLabel value="#{messages.CreateAddressLabel_addressLine2}" for="addressLine2" />
                         <p:inputText id="addressLine2" value="#{addressController.selected.addressLine2}" title="#{messages.CreateAddressTitle_addressLine2}" size="60" maxlength="60"/>
