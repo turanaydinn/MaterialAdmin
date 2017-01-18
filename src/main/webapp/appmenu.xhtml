@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:composition>
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
+            <li style="margin-left: 10px;margin-right: 10px">
+                <div class="input-group">
+                    
+                    <div class="form-line">
+                        <input type="text" class="form-control" name="username" placeholder="Search..."/>
+                    </div>
+                    <span class="input-group-addon">
+                        <i class="material-icons">search</i>
+                    </span>
+                </div>
+            </li>
             <li class="active">
                 <a href="#{request.contextPath}/index.xhtml">
                     <i class="material-icons">home</i>

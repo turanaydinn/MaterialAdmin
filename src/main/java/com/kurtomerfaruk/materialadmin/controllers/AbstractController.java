@@ -22,7 +22,8 @@ import javax.validation.ConstraintViolationException;
 /**
  *
  * @author Omer Faruk KURT kurtomerfaruk@gmail.com
- * @blog : http://kurtomerfaruk.com Created on date 17.01.2017 21:04:46
+ * @blog : http://kurtomerfaruk.com 
+ * Created on date 17.01.2017 21:04:46
  */
 public abstract class AbstractController<T> implements Serializable {
 
@@ -278,5 +279,8 @@ public abstract class AbstractController<T> implements Serializable {
             setLazyItems((Collection<T>) paramItems);
         }
     }
-
+    
+    public void resetParents(){
+        
+    }
 }

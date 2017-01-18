@@ -18,6 +18,10 @@
     background-color: menu;
 }
 
+.ui-column-filter{
+    width: 95% !important;
+}
+
 .footer-left{
     float: left;
 }
